@@ -8,6 +8,7 @@ function App() {
   const [timeLeft, setTimeLeft] = useState(25 * 60);
   const [sessionsLeft, setSessionsLeft] = useState(4);
   const [isRunning, setIsRunning] = useState(false);
+  const [completedSessions, setCompletedSessions] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [focusTime, setFocusTime] = useState(25);
@@ -15,7 +16,11 @@ function App() {
   const [longBreakTime, setLongBreakTime] = useState(20);
 
   const timerRef = useRef(null);
+  const bellRef = useRef(null);
 
+  useEffect(() => {
+    bellRef.current = new Audio("/bell.mp3");
+  }, []);
 
   useEffect(() => {
     document.body.style.backgroundColor =
@@ -35,29 +40,42 @@ function App() {
 
     if (timeLeft === 0) {
       clearInterval(timerRef.current);
+      playBellSound();
       handleNextSession();
     }
 
     return () => clearInterval(timerRef.current);
   }, [isRunning, timeLeft, status]);
 
+  const playBellSound = () => {
+    if (bellRef.current) {
+      bellRef.current.play().catch((error) => {
+        console.error("Error playing bell sound:", error);
+      });
+    }
+  };
+
   const handleNextSession = () => {
     if (status === "focus") {
-      if (sessionsLeft > 1) {
+      if (timeLeft === 0) {
+        // If the focus session ends naturally
+        setCompletedSessions((prev) => prev + 1);
         setSessionsLeft((prev) => prev - 1);
-        setStatus("short");
-        setTimeLeft(shortBreakTime * 60);
-      } else {
-        setSessionsLeft(4); // Reset cycle
-        setStatus("long");
-        setTimeLeft(longBreakTime * 60);
+  
+        if (sessionsLeft > 1) {
+          setStatus("short");
+          setTimeLeft(5 * 60); // Short break duration
+        } else {
+          setStatus("long");
+          setTimeLeft(20 * 60); // Long break duration
+          setSessionsLeft(4); // Reset the cycle
+          setCompletedSessions(0); // Reset completed sessions
+        }
       }
-    } else if (status === "short") {
+    } else if (status === "short" || status === "long") {
+      // Transition to a new focus session after a break
       setStatus("focus");
-      setTimeLeft(focusTime * 60);
-    } else {
-      setStatus("focus");
-      setTimeLeft(focusTime * 60);
+      setTimeLeft(25 * 60); // Focus session duration
     }
   };
 
@@ -67,7 +85,17 @@ function App() {
 
   const handleSkip = () => {
     clearInterval(timerRef.current);
-    handleNextSession();
+    playBellSound();
+  
+    if (status === "focus") {
+      // Always skip to a short break without decrementing sessionsLeft
+      setStatus("short");
+      setTimeLeft(5 * 60); // Short break duration
+    } else {
+      // For short and long breaks, transition to a focus session
+      setStatus("focus");
+      setTimeLeft(25 * 60); // Focus session duration
+    }
   };
 
   const handleReset = () => {
