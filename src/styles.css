@@ -64,22 +64,6 @@ h1 {
   height: 1.5em;
 }
 
-#settings-btn {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-}
-
-.icon {
-  height: 2em;
-  transition: filter 300ms;
-}
-
-.icon:hover {
-  filter: drop-shadow(0 0 2em #000000aa);
-}
-
 /* Timer Section */
 #timer-label {
   font-size: 1.2em;
@@ -145,78 +129,6 @@ h1 {
 
 .long2 {
   background-color: #56c688;
-}
-
-/* Modal Overlay */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-}
-
-/* Modal Content */
-.modal-content {
-  background-color: #eceef8;
-  padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  position: relative;
-  width: 90%;
-  max-width: 500px;
-  color: #645f81;
-}
-
-/* Close Button */
-.close-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: none;
-  border: none;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.settings-form {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 15px 20px;
-  align-items: center;
-  padding: 10px;
-  box-sizing: border-box;
-}
-
-.settings-label {
-  text-align: left;
-}
-
-.settings-input {
-  width: 100%;
-  background-color: #eceef8;
-  border: 1px solid #645f81;
-  border-radius: 3px;
-  padding: 0.5rem;
-}
-
-.settings-input:focus {
-  border: 2px solid #3b3b3b;
-}
-
-.modal-btns {
-  color: #f6f6f6;
-  background-color: #f4726c;
-  margin: 5px;
-}
-
-.modal-btns:hover {
-  background-color: #EB5252;
 }
 
 /* Media Queries */
