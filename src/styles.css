@@ -1,30 +1,15 @@
-/* App.css */
+@import url('https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@500&display=swap');
 
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  /* padding: 2rem; */
   text-align: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-/* index.css */
-
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  /* line-height: 1.5; */
   font-weight: 400;
-
-  color-scheme: light dark;
-  /* color: rgba(44, 40, 40, 0.87); */
   color: #fff0ee;
-  /* background-color: #242424; */
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -32,7 +17,7 @@
 }
 
 body {
-  margin: auto;
+  margin: 0 auto;
   min-width: 320px;
   min-height: 100vh;
 }
@@ -41,44 +26,42 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0 2rem;
-  /* color: #fff0ee; */
-}
-
-#body-section {
-
+  margin: 1rem 2rem;
 }
 
 .timer-section {
-  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 40rem;
+  height: 70vh;
   margin: 0 auto;
-  padding: 1rem;  
+  padding: 1rem;
   border-radius: 5%;
   margin-top: 1rem;
+  box-sizing: border-box;
 }
 
 #btn-section {
   margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
 }
 
-/* header section */
+/* Header Section */
 .heading {
   display: flex;
-  place-items: center;
+  align-items: center;
 }
 
 h1 {
-  display: inline;
   font-size: 1.6em;
-  line-height: 1.1;
-  /* color: #fff0ee; */
-  margin-left: 2px;
+  margin-left: 0.5rem;
 }
 
 .logo {
-  display: inline;
-  height: 1.5em; 
-  padding: 0;
+  height: 1.5em;
 }
 
 #settings-btn {
@@ -86,103 +69,85 @@ h1 {
   border: none;
   cursor: pointer;
   padding: 0;
-  margin: 0;
 }
 
 .icon {
-  height: 2em; 
-  padding: 0;
-  will-change: filter;
+  height: 2em;
   transition: filter 300ms;
 }
+
 .icon:hover {
   filter: drop-shadow(0 0 2em #000000aa);
 }
 
-
-/* timer section */
+/* Timer Section */
 #timer-label {
-  font-size: 1.5em;
+  font-size: 1.2em;
 }
+
 #time-left {
-  font-size: 8em;
-  border: 2px solid black;
+  font-size: 6em;
+  font-family: 'Azeret Mono', 'Courier New', Courier, monospace;
+  font-weight: 500;
+  margin: 1rem 0;
 }
 
 #start_stop {
-  /* color:#fff0ee; */
+  width: 18vh;
+  margin: 0 auto;
 }
 
 #reset, #skip {
-  /* color:#fff0ee; */
-  margin: 0 1rem;
+  padding: 0.5rem 1rem;
+  font-size: 1em;
 }
 
-.buttons {
+.btn {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
-  font-weight: 500;
   font-family: inherit;
   cursor: pointer;
   transition: border-color 0.25s;
+}
+
+.buttons {
   color: #fff0ee;
 }
+
 .buttons:hover {
   border-color: #fff0ee;
 }
 
-
-.focus-session {
-  background-color: #f0f0f0; /* Replace with your focus color */
-}
-.short-break {
-  background-color: #d0ffd0; /* Replace with your short break color */
-}
-.long-break {
-  background-color: #ffd0d0; /* Replace with your long break color */
-}
-
-/* focus session classes */
+/* Focus Session */
 .focus1 {
   background-color: #EB5252;
 }
+
 .focus2 {
   background-color: #f4726c;
 }
 
-/* short break classes */
+/* Short Break */
 .short1 {
   background-color: #3B4CA8;
 }
+
 .short2 {
   background-color: #4f61c1;
 }
 
-/* long break classes */
+/* Long Break */
 .long1 {
   background-color: #00b86f;
 }
+
 .long2 {
   background-color: #56c688;
 }
 
-
-/* @media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-} */
-
-/* Modal overlay */
+/* Modal Overlay */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -196,18 +161,19 @@ h1 {
   z-index: 1000;
 }
 
-/* Modal content */
+/* Modal Content */
 .modal-content {
   background-color: #eceef8;
-  padding: 10px;
+  padding: 1rem;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   position: relative;
-  width: 500px; /* Adjust width as needed */
+  width: 90%;
+  max-width: 500px;
   color: #645f81;
 }
 
-/* Close button */
+/* Close Button */
 .close-button {
   position: absolute;
   top: 10px;
@@ -222,40 +188,107 @@ h1 {
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 15px 20px;
-  align-items: center; 
-  padding: 20px;
+  align-items: center;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 .settings-label {
-  text-align: left; 
-  border: 2px solid transparent;
+  text-align: left;
 }
 
 .settings-input {
-  width: 100%; 
+  width: 100%;
   background-color: #eceef8;
-  border: 1px solid #645f81; 
+  border: 1px solid #645f81;
   border-radius: 3px;
+  padding: 0.5rem;
 }
 
 .settings-input:focus {
-  border: 2px solid #3b3b3b; 
+  border: 2px solid #3b3b3b;
 }
 
 .modal-btns {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  cursor: pointer;
-  transition: border-color 0.25s;
   color: #f6f6f6;
   background-color: #f4726c;
   margin: 5px;
 }
+
 .modal-btns:hover {
   background-color: #EB5252;
 }
 
+/* Media Queries */
+
+/* Small screens */
+@media (max-width: 650px) {
+  #header-section {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  h1 {
+    font-size: 1.4em;
+  }
+
+  #time-left {
+    font-size: 5em;
+  }
+
+  .timer-section {
+    max-width: 90%;
+    height: auto;
+    padding: 1rem;
+  }
+
+  .modal-content {
+    padding: 1rem;
+  }
+}
+
+/* Short screens */
+@media (max-height: 500px) {
+  body {
+    font-size: 0.9em;
+  }
+
+  #time-left {
+    font-size: 4em;
+  }
+
+  .timer-section {
+    padding: 0.5rem;
+    height: 60vh;
+  }
+
+  .modal-content {
+    padding: 0.5rem;
+  }
+}
+
+/* Very small and short screens */
+@media (max-width: 450px), (max-height: 400px) {
+  h1 {
+    font-size: 1.2em;
+  }
+
+  #time-left {
+    font-size: 3.5em;
+  }
+
+  .timer-section {
+    padding: 0.4rem;
+    height: auto;
+  }
+
+  .settings-form {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .modal-content {
+    padding: 0.5rem;
+    font-size: 0.9em;
+  }
+}

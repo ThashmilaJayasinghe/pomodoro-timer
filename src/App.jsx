@@ -58,24 +58,24 @@ function App() {
   const handleNextSession = () => {
     if (status === "focus") {
       if (timeLeft === 0) {
-        // If the focus session ends naturally
+        // focus session ends without skips
         setCompletedSessions((prev) => prev + 1);
         setSessionsLeft((prev) => prev - 1);
   
         if (sessionsLeft > 1) {
           setStatus("short");
-          setTimeLeft(5 * 60); // Short break duration
+          setTimeLeft(5 * 60); // short break duration
         } else {
           setStatus("long");
-          setTimeLeft(20 * 60); // Long break duration
-          setSessionsLeft(4); // Reset the cycle
-          setCompletedSessions(0); // Reset completed sessions
+          setTimeLeft(20 * 60); // long break duration
+          setSessionsLeft(4); // resetting the cycle
+          setCompletedSessions(0); // resetting completed sessions
         }
       }
     } else if (status === "short" || status === "long") {
-      // Transition to a new focus session after a break
+      // switching to a new focus session after a break
       setStatus("focus");
-      setTimeLeft(25 * 60); // Focus session duration
+      setTimeLeft(25 * 60); // focus session duration
     }
   };
 
@@ -88,13 +88,13 @@ function App() {
     playBellSound();
   
     if (status === "focus") {
-      // Always skip to a short break without decrementing sessionsLeft
+      // skipping to a short break without decrementing sessionsLeft
       setStatus("short");
       setTimeLeft(5 * 60); // Short break duration
     } else {
-      // For short and long breaks, transition to a focus session
+      // switching to focus session after breaks
       setStatus("focus");
-      setTimeLeft(25 * 60); // Focus session duration
+      setTimeLeft(25 * 60); // focus session duration
     }
   };
 
@@ -107,9 +107,9 @@ function App() {
   };
 
   const handleSaveSettings = () => {
-    setTimeLeft(focusTime * 60); // Update timer with new focus time
+    setTimeLeft(focusTime * 60); // updating timer with new focus time
     setIsModalOpen(false);
-    handleReset(); // Reset the app with new settings
+    handleReset(); // resetting the app with new settings
   };
 
   return (
@@ -139,15 +139,15 @@ function App() {
             }
           </p>
           <p id="time-left">
-            {`${Math.floor(timeLeft / 60)}:${
-              timeLeft % 60 < 10 ? "0" : ""
-              }${timeLeft % 60}`
-            }
+          {`${String(Math.floor(timeLeft / 60)).padStart(2, "0")}:${String(
+            timeLeft % 60
+            ).padStart(2, "0")}`
+          }
           </p>
           <p id="session-label" >{`focus sessions left till long break: ${sessionsLeft}`}</p>
           <button 
             id="start_stop" 
-            className={`${status}1 buttons`}
+            className={`${status}1 buttons btn`}
             onClick={handlePauseContinue}
           >
             {isRunning ? "pause timer" : "start timer"}
@@ -157,14 +157,14 @@ function App() {
         <div id="btn-section">
           <button 
             id="reset" 
-            className={`${status}2 buttons`}
+            className={`${status}2 buttons btn`}
             onClick={handleReset}
           >
             reset
           </button>
           <button 
             id="skip" 
-            className={`${status}2 buttons`}
+            className={`${status}2 buttons btn`}
             onClick={handleSkip}
           >
             skip
@@ -219,10 +219,10 @@ function App() {
           />
         
         </div>
-        <button className="modal-btns" onClick={handleSaveSettings}>
+        <button className="modal-btns btn" onClick={handleSaveSettings}>
           save
         </button>
-        <button className="modal-btns" onClick={handleReset}>
+        <button className="modal-btns btn" onClick={handleReset}>
           reset
         </button>
       </Modal>
