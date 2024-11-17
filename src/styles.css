@@ -1,0 +1,261 @@
+/* App.css */
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  /* padding: 2rem; */
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+/* index.css */
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /* line-height: 1.5; */
+  font-weight: 400;
+
+  color-scheme: light dark;
+  /* color: rgba(44, 40, 40, 0.87); */
+  color: #fff0ee;
+  /* background-color: #242424; */
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: auto;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+#header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 2rem;
+  /* color: #fff0ee; */
+}
+
+#body-section {
+
+}
+
+.timer-section {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 1rem;  
+  border-radius: 5%;
+  margin-top: 1rem;
+}
+
+#btn-section {
+  margin-top: 1rem;
+}
+
+/* header section */
+.heading {
+  display: flex;
+  place-items: center;
+}
+
+h1 {
+  display: inline;
+  font-size: 1.6em;
+  line-height: 1.1;
+  /* color: #fff0ee; */
+  margin-left: 2px;
+}
+
+.logo {
+  display: inline;
+  height: 1.5em; 
+  padding: 0;
+}
+
+#settings-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+
+.icon {
+  height: 2em; 
+  padding: 0;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.icon:hover {
+  filter: drop-shadow(0 0 2em #000000aa);
+}
+
+
+/* timer section */
+#timer-label {
+  font-size: 1.5em;
+}
+#time-left {
+  font-size: 8em;
+  border: 2px solid black;
+}
+
+#start_stop {
+  /* color:#fff0ee; */
+}
+
+#reset, #skip {
+  /* color:#fff0ee; */
+  margin: 0 1rem;
+}
+
+.buttons {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  color: #fff0ee;
+}
+.buttons:hover {
+  border-color: #fff0ee;
+}
+
+
+.focus-session {
+  background-color: #f0f0f0; /* Replace with your focus color */
+}
+.short-break {
+  background-color: #d0ffd0; /* Replace with your short break color */
+}
+.long-break {
+  background-color: #ffd0d0; /* Replace with your long break color */
+}
+
+/* focus session classes */
+.focus1 {
+  background-color: #EB5252;
+}
+.focus2 {
+  background-color: #f4726c;
+}
+
+/* short break classes */
+.short1 {
+  background-color: #3B4CA8;
+}
+.short2 {
+  background-color: #4f61c1;
+}
+
+/* long break classes */
+.long1 {
+  background-color: #00b86f;
+}
+.long2 {
+  background-color: #56c688;
+}
+
+
+/* @media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+} */
+
+/* Modal overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Modal content */
+.modal-content {
+  background-color: #eceef8;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+  width: 500px; /* Adjust width as needed */
+  color: #645f81;
+}
+
+/* Close button */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.settings-form {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 15px 20px;
+  align-items: center; 
+  padding: 20px;
+}
+
+.settings-label {
+  text-align: left; 
+  border: 2px solid transparent;
+}
+
+.settings-input {
+  width: 100%; 
+  background-color: #eceef8;
+  border: 1px solid #645f81; 
+  border-radius: 3px;
+}
+
+.settings-input:focus {
+  border: 2px solid #3b3b3b; 
+}
+
+.modal-btns {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  color: #f6f6f6;
+  background-color: #f4726c;
+  margin: 5px;
+}
+.modal-btns:hover {
+  background-color: #EB5252;
+}
+
