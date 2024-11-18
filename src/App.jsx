@@ -55,7 +55,6 @@ function App() {
     if (status === "focus") {
       if (timeLeft === 0) {
         // focus session ends without skips
-        // setCompletedSessions((prev) => prev + 1);
         setSessionsLeft((prev) => prev - 1);
   
         if (sessionsLeft > 1) {
@@ -65,7 +64,6 @@ function App() {
           setStatus("long");
           setTimeLeft(LONG_BREAK_TIME * 60); // long break duration
           setSessionsLeft(4); // resetting the cycle
-          // setCompletedSessions(0); // resetting completed sessions
         }
       }
     } else if (status === "short" || status === "long") {

@@ -153,10 +153,6 @@ h1 {
     height: auto;
     padding: 1rem;
   }
-
-  .modal-content {
-    padding: 1rem;
-  }
 }
 
 /* Short screens */
@@ -173,10 +169,6 @@ h1 {
     padding: 0.5rem;
     height: 60vh;
   }
-
-  .modal-content {
-    padding: 0.5rem;
-  }
 }
 
 /* Very small and short screens */
@@ -192,15 +184,5 @@ h1 {
   .timer-section {
     padding: 0.4rem;
     height: auto;
-  }
-
-  .settings-form {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-
-  .modal-content {
-    padding: 0.5rem;
-    font-size: 0.9em;
   }
 }
